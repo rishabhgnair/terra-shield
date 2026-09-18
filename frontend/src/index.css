@@ -1,0 +1,51 @@
+@import "leaflet/dist/leaflet.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    @apply min-h-screen bg-[#f6f7f2] text-stone-900 antialiased selection:bg-emerald-200 selection:text-emerald-950;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  button,
+  input {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f0e8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7c0b4;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a196;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.gm-style .gm-style-iw-c {
+  border-radius: 8px;
+}
+
+.gm-style .gm-style-iw-d {
+  overflow: auto !important;
+}
