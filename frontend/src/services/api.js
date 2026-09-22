@@ -11,7 +11,9 @@ const apiClient = axios.create({
 });
 
 export const checkHealth = async () => {
-  const response = await apiClient.get('/health');
+  // /health is registered at Flask root (not under /api blueprint)
+  const baseUrl = API_BASE_URL.replace(/\/api$/, '');
+  const response = await axios.get(`${baseUrl}/health`, { timeout: 5000 });
   return response.data;
 };
 

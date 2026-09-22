@@ -30,7 +30,7 @@ def determine_risk_level(probability, sanitized_inputs):
     safety_override = False
 
     if triggered and forced_risk:
-        risk_priority = {'LOW': 1, 'MODERATE': 2, 'HIGH': 3}
+        risk_priority = {'LOW': 1, 'MODERATE': 2, 'HIGH': 3, 'CRITICAL': 4}
         if risk_priority[forced_risk] > risk_priority[ml_risk_level]:
             final_risk_level = forced_risk
             safety_override = True
@@ -61,7 +61,9 @@ def determine_risk_level(probability, sanitized_inputs):
     elif ground_movement > 1.5:
         contributing_factors.append({'factor': 'Ground Displacement', 'level': 'ELEVATED', 'value': f"{ground_movement} mm"})
 
-    if final_risk_level == 'HIGH':
+    if final_risk_level == 'CRITICAL':
+        message = "CRITICAL LANDSLIDE RISK DETECTED. Extreme environmental conditions present. Immediate evacuation advisory — deploy NDRF and emergency response teams."
+    elif final_risk_level == 'HIGH':
         message = "HIGH LANDSLIDE RISK DETECTED. Environmental and geological metrics indicate severe risk. Heightened monitoring and safety protocols recommended."
     elif final_risk_level == 'MODERATE':
         message = "MODERATE LANDSLIDE RISK DETECTED. Environmental conditions elevated. Continued sensor monitoring is recommended."
